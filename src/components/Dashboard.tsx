@@ -1,8 +1,11 @@
-import { Table, Badge, Title, Paper, Container, Tooltip, Text, Group, LoadingOverlay, Tabs } from '@mantine/core';
+import { Table, Badge, Title, Paper, Container, Tooltip, Text, Group, LoadingOverlay, ActionIcon, Tabs } from '@mantine/core';
 import { useCollection } from '../hooks/useCollection';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faCheck, faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import { db } from '../config/firebase';
+import { doc, updateDoc } from 'firebase/firestore';
+import { notifications } from '@mantine/notifications';
 import { useState, useMemo } from 'react';
 
 interface Visit {
@@ -19,6 +22,7 @@ interface Visit {
   time: string;
   idNumber: string;
   createdAt: string;
+  arrived?: boolean;
 }
 
 const Dashboard = () => {
@@ -34,6 +38,27 @@ const Dashboard = () => {
       'Sales': 'cyan',
     };
     return colors[department as keyof typeof colors] || 'gray';
+  };
+
+  const handleConfirmArrival = async (visitId: string) => {
+    try {
+      const visitRef = doc(db, 'visits', visitId);
+      await updateDoc(visitRef, {
+        arrived: true
+      });
+      notifications.show({
+        title: 'Success',
+        message: 'Visitor arrival confirmed',
+        color: 'green',
+      });
+    } catch (error) {
+      console.error('Error confirming arrival:', error);
+      notifications.show({
+        title: 'Error',
+        message: 'Failed to confirm visitor arrival',
+        color: 'red',
+      });
+    }
   };
 
   const filteredVisits = useMemo(() => {
@@ -107,6 +132,7 @@ const Dashboard = () => {
                 <Table.Th>Visitor Contact</Table.Th>
                 <Table.Th>Date & Time</Table.Th>
                 <Table.Th>ID Number</Table.Th>
+                <Table.Th>Status</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>
@@ -163,11 +189,29 @@ const Dashboard = () => {
                   <Table.Td>
                     <Text tt="uppercase" ff="monospace">{visit.idNumber || 'N/A'}</Text>
                   </Table.Td>
+                  <Table.Td>
+                    {visit.arrived ? (
+                      <Badge color="green" leftSection={<FontAwesomeIcon icon={faUserCheck} size="1x" />}>
+                        Arrived
+                      </Badge>
+                    ) : (
+                      <Tooltip label="Confirm Arrival">
+                        <ActionIcon 
+                          variant="light" 
+                          color="blue" 
+                          onClick={() => visit.id && handleConfirmArrival(visit.id)}
+                          size="lg"
+                        >
+                          <FontAwesomeIcon icon={faCheck} size="1x" />
+                        </ActionIcon>
+                      </Tooltip>
+                    )}
+                  </Table.Td>
                 </motion.tr>
               ))}
               {filteredVisits?.length === 0 && (
                 <Table.Tr>
-                  <Table.Td colSpan={7} style={{ textAlign: 'center' }}>
+                  <Table.Td colSpan={8} style={{ textAlign: 'center' }}>
                     <Text c="dimmed">No visits found</Text>
                   </Table.Td>
                 </Table.Tr>
