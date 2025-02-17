@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AppShell, Container, Title, Group, Button, Image, Box, rem } from '@mantine/core';
+import { AppShell, Container, Title, Group, Button, Image, rem } from '@mantine/core';
 import { auth } from './config/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

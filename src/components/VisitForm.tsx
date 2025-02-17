@@ -24,7 +24,6 @@ import {
   faPhone,
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
-import type { VisitRecord } from "../types";
 import SuccessModal from "./SuccessModal";
 
 const VisitForm = () => {
