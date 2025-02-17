@@ -9,7 +9,7 @@ import { notifications } from '@mantine/notifications';
 import { useState, useMemo } from 'react';
 import { DatePickerInput } from '@mantine/dates';
 import logo from '../assets/logo.svg';
-import { getAuth, signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
 interface Visit {
