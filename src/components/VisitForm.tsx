@@ -7,7 +7,6 @@ import {
   Grid,
   Stack,
   Text,
-  rem,
   LoadingOverlay,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
@@ -172,7 +171,7 @@ Time: ${values.time}
       >
         <Paper radius="md" p="xl" withBorder mb="xl" shadow="sm" pos="relative">
           <LoadingOverlay visible={isSubmitting} overlayProps={{ blur: 2 }} />
-          <Stack spacing="lg">
+          <Stack gap="lg">
             <Title order={2} ta="center" c="blue">
               Employee Information
             </Title>
@@ -183,7 +182,7 @@ Time: ${values.time}
 
             <form onSubmit={form.onSubmit(handleSubmit)}>
               <Grid>
-                <Grid.Col span={12} sm={4}>
+                <Grid.Col span={{ base: 12, sm: 4 }}>
                   <TextInput
                     label="Employee Number"
                     required
@@ -191,7 +190,7 @@ Time: ${values.time}
                     {...form.getInputProps("employeeNumber")}
                   />
                 </Grid.Col>
-                <Grid.Col span={12} sm={4}>
+                <Grid.Col span={{ base: 12, sm: 4 }}>
                   <TextInput
                     label="Employee Name"
                     required
@@ -201,7 +200,7 @@ Time: ${values.time}
                     {...form.getInputProps("name")}
                   />
                 </Grid.Col>
-                <Grid.Col span={12} sm={4}>
+                <Grid.Col span={{ base: 12, sm: 4 }}>
                   <TextInput
                     label="Department"
                     required
@@ -211,7 +210,7 @@ Time: ${values.time}
                     {...form.getInputProps("department")}
                   />
                 </Grid.Col>
-                <Grid.Col span={12} sm={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="Employee Email"
                     required
@@ -221,7 +220,7 @@ Time: ${values.time}
                     {...form.getInputProps("employeeEmail")}
                   />
                 </Grid.Col>
-                <Grid.Col span={12} sm={6}>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="Phone Number"
                     required
@@ -264,7 +263,7 @@ Time: ${values.time}
                         Visitor Information
                       </Title>
                       <Grid>
-                        <Grid.Col span={12} sm={6}>
+                        <Grid.Col span={{ base: 12, sm: 6 }}>
                           <TextInput
                             label="Visitor Name"
                             required
@@ -274,7 +273,7 @@ Time: ${values.time}
                             {...form.getInputProps("visitorName")}
                           />
                         </Grid.Col>
-                        <Grid.Col span={12} sm={6}>
+                        <Grid.Col span={{ base: 12, sm: 6 }}>
                           <TextInput
                             label="Profession"
                             required
@@ -284,7 +283,7 @@ Time: ${values.time}
                             {...form.getInputProps("profession")}
                           />
                         </Grid.Col>
-                        <Grid.Col span={12} sm={6}>
+                        <Grid.Col span={{ base: 12, sm: 6 }}>
                           <TextInput
                             label="Phone Number"
                             required
@@ -294,7 +293,7 @@ Time: ${values.time}
                             {...form.getInputProps("visitorPhone")}
                           />
                         </Grid.Col>
-                        <Grid.Col span={12} sm={6}>
+                        <Grid.Col span={{ base: 12, sm: 6 }}>
                           <TextInput
                             label="ID Number"
                             leftSection={
@@ -303,7 +302,7 @@ Time: ${values.time}
                             {...form.getInputProps("idNumber")}
                           />
                         </Grid.Col>
-                        <Grid.Col span={12} sm={6}>
+                        <Grid.Col span={{ base: 12, sm: 6 }}>
                           <TextInput
                             label="Date"
                             type="date"
@@ -311,7 +310,7 @@ Time: ${values.time}
                             {...form.getInputProps("date")}
                           />
                         </Grid.Col>
-                        <Grid.Col span={12} sm={6}>
+                        <Grid.Col span={{ base: 12, sm: 6 }}>
                           <TextInput
                             label="Time"
                             type="time"

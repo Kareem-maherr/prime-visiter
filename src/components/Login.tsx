@@ -36,7 +36,7 @@ const Login = () => {
     >
       <Container size="xs" mt="xl">
         <Paper radius="md" p="xl" withBorder>
-          <Title order={2} align="center" mb="lg">
+          <Title order={2} ta="center" mb="lg">
             Front Desk Login
           </Title>
           <form onSubmit={handleLogin}>
