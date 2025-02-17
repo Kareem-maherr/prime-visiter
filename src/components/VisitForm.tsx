@@ -92,59 +92,6 @@ const VisitForm = () => {
 
       await addDoc(collection(db, "visits"), visitData);
 
-      // Create email notification with corrected MailerSend structure
-      const emailHtmlContent = `
-        <h2>New Visit Registration</h2>
-        <h3>Employee Details:</h3>
-        <p>Employee Number: ${values.employeeNumber}</p>
-        <p>Name: ${values.name}</p>
-        <p>Department: ${values.department}</p>
-        <p>Email: ${values.employeeEmail}</p>
-        <p>Phone: ${values.employeePhone}</p>
-        
-        <h3>Visitor Details:</h3>
-        <p>Name: ${values.visitorName}</p>
-        <p>Profession: ${values.profession}</p>
-        <p>Phone: ${values.visitorPhone}</p>
-        <p>ID Number: ${values.idNumber}</p>
-        <p>Date: ${values.date}</p>
-        <p>Time: ${values.time}</p>
-      `;
-
-      const emailTextContent = `
-New Visit Registration
-
-Employee Details:
-Employee Number: ${values.employeeNumber}
-Name: ${values.name}
-Department: ${values.department}
-Email: ${values.employeeEmail}
-Phone: ${values.employeePhone}
-
-Visitor Details:
-Name: ${values.visitorName}
-Profession: ${values.profession}
-Phone: ${values.visitorPhone}
-ID Number: ${values.idNumber}
-Date: ${values.date}
-Time: ${values.time}
-      `;
-      {/* 
-      await addDoc(collection(db, "emails"), {
-        to: [
-          {
-            email: "kingo2055@gmail.com",
-            name: "Visit Administrator",
-          },
-        ],
-        from: {
-          email: "MS_s0l9Xx@trial-yzkq340vew0ld796.mlsender.net",
-          name: "Visit Management System",
-        },
-        subject: `New Visit Registration: ${values.visitorName}`,
-        html: emailHtmlContent,
-        text: emailTextContent,
-      });*/}
 
       setShowSuccessModal(true);
       form.reset();

@@ -161,7 +161,7 @@ const Dashboard = () => {
                     <Text size="xs" c="dimmed">{visit.time || 'N/A'}</Text>
                   </Table.Td>
                   <Table.Td>
-                    <Text tt="uppercase" fontFamily="monospace">{visit.idNumber || 'N/A'}</Text>
+                    <Text tt="uppercase" ff="monospace">{visit.idNumber || 'N/A'}</Text>
                   </Table.Td>
                 </motion.tr>
               ))}
