@@ -58,7 +58,7 @@ function App() {
               >
                 <Image src={logo} w={rem(40)} />
               </motion.div>
-              <Title order={1} size="h2">Prime Visiter</Title>
+              <Title order={1} size="h2">Prime Visitor</Title>
             </Group>
             <Group>
               {isAuthenticated ? (

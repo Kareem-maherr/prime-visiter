@@ -51,9 +51,9 @@ const VisitForm = () => {
       name: (value) => (value ? null : "Name is required"),
       department: (value) => (value ? null : "Department is required"),
       employeeEmail: (value) =>
-        /^\S+@\S+$/.test(value) ? null : "Invalid email",
+        !value || /^\S+@\S+$/.test(value) ? null : "Invalid email",
       employeePhone: (value) =>
-        /^\+?[\d\s-]{10,}$/.test(value) ? null : "Invalid phone number",
+        !value || /^\+?[\d\s-]{10,}$/.test(value) ? null : "Invalid phone number",
       visitorName: (value) =>
         showVisitorForm && !value ? "Visitor name is required" : null,
       profession: (value) =>
@@ -160,7 +160,6 @@ const VisitForm = () => {
                 <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="Employee Email"
-                    required
                     leftSection={
                       <FontAwesomeIcon icon={faEnvelope} size="1x" />
                     }
@@ -170,7 +169,6 @@ const VisitForm = () => {
                 <Grid.Col span={{ base: 12, sm: 6 }}>
                   <TextInput
                     label="Phone Number"
-                    required
                     leftSection={<FontAwesomeIcon icon={faPhone} size="1x" />}
                     {...form.getInputProps("employeePhone")}
                   />

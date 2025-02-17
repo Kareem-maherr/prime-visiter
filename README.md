@@ -1,4 +1,4 @@
-# Prime Visiter - Visitor Management System
+# Prime Visitor - Visitor Management System
 
 A modern, responsive visitor management system built with React, TypeScript, and Firebase.
 
